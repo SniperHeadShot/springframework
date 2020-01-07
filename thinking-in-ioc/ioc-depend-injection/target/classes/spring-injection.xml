@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="userRepository" class="com.bat.spring.depend.injection.repository.UserRepository" autowire="byType">
+
+        <!--
+            手动注入对象
+            <property name="users">
+                <util:list>
+                    <ref bean="user"/>
+                    <ref bean="user1"/>
+                </util:list>
+            </property>
+        -->
+
+        <!-- 自动方式为开启bean的autowire为按类型注入-->
+    </bean>
+</beans>

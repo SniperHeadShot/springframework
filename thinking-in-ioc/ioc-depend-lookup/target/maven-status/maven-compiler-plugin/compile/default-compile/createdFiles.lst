@@ -1,0 +1,4 @@
+com\bat\spring\depend\lookup\annotation\CustomAnnotation.class
+com\bat\spring\depend\lookup\domain\User.class
+com\bat\spring\depend\lookup\SpringframeworkDependLookUp.class
+com\bat\spring\depend\lookup\domain\SpecificUser.class

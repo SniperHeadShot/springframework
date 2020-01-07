@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="spring-injection.xml"/>
+
+    <bean id="user" class="com.bat.spring.depend.injection.domain.User" primary="true">
+        <property name="id" value="1"/>
+        <property name="name" value="ZY"/>
+        <property name="age" value="26"/>
+    </bean>
+
+    <bean id="user1" class="com.bat.spring.depend.injection.domain.User">
+        <property name="id" value="2"/>
+        <property name="name" value="GMX"/>
+        <property name="age" value="27"/>
+    </bean>
+</beans>
