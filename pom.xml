@@ -11,6 +11,7 @@
 
     <modules>
         <module>spring-bean</module>
+        <module>dependency-lookup</module>
     </modules>
 
     <properties>
