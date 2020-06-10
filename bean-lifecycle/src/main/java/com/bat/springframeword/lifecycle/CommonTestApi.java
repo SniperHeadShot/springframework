@@ -9,6 +9,7 @@ import java.util.Map;
 
 /**
  * 临时测试
+ * {@link org.springframework.beans.factory.config.ConfigurableBeanFactory#getMergedBeanDefinition(String)}
  *
  * @author ZhengYu
  * @version 1.0 2020/6/6 14:19
