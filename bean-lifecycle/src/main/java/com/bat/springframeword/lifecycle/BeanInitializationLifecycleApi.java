@@ -15,12 +15,12 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.util.ObjectUtils;
 
 /**
- * Bean 实例化 生命周期实现
+ * Bean 初始化 生命周期实现
  *
  * @author ZhengYu
- * @version 1.0 2020/6/10 22:56
+ * @version 1.0 2020/6/12 22:56
  **/
-public class BeanInstantiationLifecycleApi {
+public class BeanInitializationLifecycleApi {
     public static void main(String[] args) {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
@@ -74,7 +74,7 @@ public class BeanInstantiationLifecycleApi {
         /**
          * 实例化完成之后对属性的控制, 判断属性应不应该赋值
          *
-         * @param bean     实例
+         * @param bean     对象
          * @param beanName bean名称
          * @return boolean true 表示使用配置的元信息实例化Bean, false 表示不适用配置的元信息
          * @author ZhengYu
@@ -90,7 +90,7 @@ public class BeanInstantiationLifecycleApi {
         /**
          * 实例化赋值时需要新增或修改属性
          *
-         * @param bean     实例
+         * @param bean     对象
          * @param beanName bean名称
          * @return boolean true 表示使用配置的元信息实例化Bean, false 表示不适用配置的元信息
          * @author ZhengYu
@@ -110,6 +110,42 @@ public class BeanInstantiationLifecycleApi {
                 mutablePropertyValues.add("age", 30);
                 // 将生成的对象赋值为
                 return mutablePropertyValues;
+            }
+            return null;
+        }
+
+        /**
+         * 初始化前的阶段
+         * {@link org.springframework.beans.factory.config.BeanPostProcessor#postProcessBeforeInitialization(Object, String)}
+         *
+         * @param bean     对象
+         * @param beanName 名称
+         * @return java.lang.Object
+         * @author ZhengYu
+         */
+        @Override
+        public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+            if (ObjectUtils.nullSafeEquals("xmlUser", beanName) && User.class.equals(bean.getClass())) {
+                ((User) bean).setName("初始化前拦截赋值");
+                return bean;
+            }
+            return null;
+        }
+
+        /**
+         * 初始化后的阶段
+         * {@link org.springframework.beans.factory.config.BeanPostProcessor#postProcessBeforeInitialization(Object, String)}
+         *
+         * @param bean     对象
+         * @param beanName 名称
+         * @return java.lang.Object
+         * @author ZhengYu
+         */
+        @Override
+        public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+            if (ObjectUtils.nullSafeEquals("xmlUser", beanName) && User.class.equals(bean.getClass())) {
+                ((User) bean).setName("初始化后拦截赋值");
+                return bean;
             }
             return null;
         }

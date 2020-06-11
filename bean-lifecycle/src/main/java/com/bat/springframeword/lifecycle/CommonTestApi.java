@@ -2,6 +2,7 @@ package com.bat.springframeword.lifecycle;
 
 import com.alibaba.fastjson.JSONObject;
 import com.bat.springframeword.lifecycle.entity.User;
+import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 
@@ -9,7 +10,7 @@ import java.util.Map;
 
 /**
  * 临时测试
- * {@link org.springframework.beans.factory.config.ConfigurableBeanFactory#getMergedBeanDefinition(String)}
+ * {@link SmartInitializingSingleton#afterSingletonsInstantiated()}
  *
  * @author ZhengYu
  * @version 1.0 2020/6/6 14:19
