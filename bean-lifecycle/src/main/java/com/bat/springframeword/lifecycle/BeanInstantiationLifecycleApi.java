@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.bat.springframeword.lifecycle.entity.SuperUser;
 import com.bat.springframeword.lifecycle.entity.User;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.MutablePropertyValues;
+import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -39,6 +41,9 @@ public class BeanInstantiationLifecycleApi {
 
         SuperUser superUser = beanFactory.getBean("superUser", SuperUser.class);
         System.out.println(JSONObject.toJSONString(superUser));
+
+        User beforePopulateBeanUser = beanFactory.getBean("beforePopulateBeanUser", User.class);
+        System.out.println(JSONObject.toJSONString(beforePopulateBeanUser));
     }
 
 
@@ -80,6 +85,33 @@ public class BeanInstantiationLifecycleApi {
                 return false;
             }
             return true;
+        }
+
+        /**
+         * 实例化赋值时需要新增或修改属性
+         *
+         * @param bean     实例
+         * @param beanName bean名称
+         * @return boolean true 表示使用配置的元信息实例化Bean, false 表示不适用配置的元信息
+         * @author ZhengYu
+         */
+        @Override
+        public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+            if (ObjectUtils.nullSafeEquals("beforePopulateBeanUser", beanName) && User.class.equals(bean.getClass())) {
+                // 根据回调的 pvs 生成 MutablePropertyValues 对象
+                final MutablePropertyValues mutablePropertyValues;
+
+                if (pvs instanceof MutablePropertyValues) {
+                    mutablePropertyValues = MutablePropertyValues.class.cast(pvs);
+                } else {
+                    mutablePropertyValues = new MutablePropertyValues();
+                }
+
+                mutablePropertyValues.add("age", 30);
+                // 将生成的对象赋值为
+                return mutablePropertyValues;
+            }
+            return null;
         }
     }
 }

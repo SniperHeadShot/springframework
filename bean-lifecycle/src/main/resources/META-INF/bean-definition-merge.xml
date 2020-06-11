@@ -8,4 +8,9 @@
     <bean id="superUser" class="com.bat.springframeword.lifecycle.entity.SuperUser" parent="xmlUser">
         <property name="sex" value="男"/>
     </bean>
+
+    <bean id="beforePopulateBeanUser" class="com.bat.springframeword.lifecycle.entity.User">
+        <property name="name" value="beforePopulateBeanUser"/>
+        <property name="age" value="27"/>
+    </bean>
 </beans>
