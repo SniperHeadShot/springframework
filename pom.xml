@@ -12,6 +12,7 @@
     <modules>
         <module>chapter_01_ioc</module>
         <module>common</module>
+        <module>chapter_02_resources</module>
     </modules>
 
     <properties>
