@@ -31,7 +31,7 @@ public class BeanDefinitionBuildApi {
     private static BeanDefinition buildMethodOne() {
         return BeanDefinitionBuilder.genericBeanDefinition(CustomEntity.class)
                 .addPropertyValue("id", 1L)
-                .addPropertyValue("name", "zy")
+                .addPropertyValue("name", "x")
                 .addPropertyValue("age", 25)
                 .getBeanDefinition();
     }
@@ -48,7 +48,7 @@ public class BeanDefinitionBuildApi {
 //        mutablePropertyValues.addPropertyValue("id", 1L);
         mutablePropertyValues
                 .add("id", 1L)
-                .add("name", "zy")
+                .add("name", "x")
                 .add("age", 25);
         result.setPropertyValues(mutablePropertyValues);
         return result;
