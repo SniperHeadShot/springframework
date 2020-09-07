@@ -27,7 +27,7 @@ public class ApplicationEventListenerApi {
         applicationContext.close();
     }
 
-    // 方式2: 基于注解
+    // 方式2: 基于注解(异步)
     @Async
     @EventListener
     public void onApplicationEvent(ApplicationEvent event) {

@@ -4,7 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * 基于 Java.util 包接口实现观察者模式
+ * 基于 Java.util 包提供接口实现观察者模式
  *
  * @author ZhengYu
  * @version 1.0 2020/9/7 19:50
