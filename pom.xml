@@ -14,6 +14,7 @@
         <module>common</module>
         <module>chapter_02_resources</module>
         <module>chapter_08_event</module>
+        <module>chapter_09_annotation</module>
     </modules>
 
     <properties>
